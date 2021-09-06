@@ -1,0 +1,15 @@
+    public static int[] bubbleSort(int[] arr){
+        if (arr == null){
+            throw new IllegalArgumentException();
+        }
+        for (int out = arr.length - 1; out > 0; out--){
+            for (int inner = 0; inner < out; inner++){
+                if (arr[inner]>arr[inner+1]){ //switch
+                    int larger = arr[inner];
+                    arr[inner] = arr[inner + 1];
+                    arr[inner + 1] = larger;
+                }
+            }
+        }
+        return arr;
+    }
