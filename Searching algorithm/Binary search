@@ -1,4 +1,11 @@
-    public static int binarySearch(int[] arrs, int target) {
+  /**
+   * Find the index of target of an array
+   *
+   * @param arrs   array to search
+   * @param target the target for searching
+   * @return index i such arr[i] = target, if no target in the array, return -1
+   */   
+   public static int binarySearch(int[] arrs, int target) {
         if (arrs == null){
             throw new NullPointerException();
         }
