@@ -1,4 +1,4 @@
-    /**
+   /**
     * Sort the arr from the smallest to the largest.
     * Throw a illegalArgument exception if the arr point to null.
     * @param arr the list to be sorted
