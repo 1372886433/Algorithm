@@ -2,9 +2,8 @@
      * Sort the arr from the smallest to the largest.
      * @throws NullPointerException if the arr point to null.
      * @param arr the array to be sorted. The element at index 0 should be a sentinel.
-     * @return  the sorted array from small to large
      */
-    public static int[] straightInsertionSort(int [] arr){
+    public static void straightInsertionSort(int [] arr){
         if(arr == null) {
             throw new NullPointerException();
         }
@@ -17,5 +16,4 @@
             arr[j+1] = arr[0];
         }
         arr[0] = 0;
-        return arr;
     }
