@@ -4,6 +4,7 @@
    * @param arrs   array to search
    * @param target the target for searching
    * @return index i such arr[i] = target, if no target in the array, return -1
+   * @throws NullPointerException if arrs points to null
    */   
    public static int binarySearch(int[] arrs, int target) {
         if (arrs == null){
