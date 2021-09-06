@@ -1,0 +1,23 @@
+    public static int binarySearch(int[] arrs, int target) {
+        if (arrs == null){
+            throw new NullPointerException();
+        }
+        int low = -1;
+        int high = arrs.length;
+        int mid;
+        while (low < high - 1){
+            mid = (low + high) / 2;
+            if (arrs[mid] >= target){
+                high = mid;
+            }else {
+                low = mid;
+            }
+        }
+        if (high == arrs.length){
+            return -1;
+        }else if(arrs[high] == target){
+            return high;
+        }else {
+            return -1;
+        }
+    }
