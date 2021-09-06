@@ -2,9 +2,8 @@
     * Sort the arr from the smallest to the largest.
     * @throws NullPointerException if the arr point to null.
     * @param arr the list to be sorted
-    * @return the sorted list from small to large
     */
-    public static int[] bubbleSort(int[] arr){
+    public static void bubbleSort(int[] arr){
         if (arr == null){
             throw new NullPointerException();
         }
@@ -17,5 +16,4 @@
                 }
             }
         }
-        return arr;
     }
