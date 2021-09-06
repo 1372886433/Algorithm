@@ -2,10 +2,9 @@
      * Sort the arr from the smallest to the largest.
      *
      * @param arr the array to be sorted. The element at index 0 should be a sentinel.
-     * @return the sorted array from small to large
      * @throws NullPointerException if the arr point to null.
      */
-    public static int[] binaryInsertionSort(int[] arr) {
+    public static void binaryInsertionSort(int[] arr) {
         if (arr == null) throw new NullPointerException();
         // the index 0 is a sentinel and the index 1 doesn't need to be sorted.
         for (int i = 2; i < arr.length; i++) {
@@ -27,5 +26,4 @@
             arr[high] = arr[0];
         }
         arr[0] = 0;
-        return arr;
     }
