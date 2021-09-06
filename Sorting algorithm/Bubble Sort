@@ -1,12 +1,12 @@
    /**
     * Sort the arr from the smallest to the largest.
-    * Throw a illegalArgument exception if the arr point to null.
+    * @throws NullPointerException if the arr point to null.
     * @param arr the list to be sorted
     * @return the sorted list from small to large
     */
     public static int[] bubbleSort(int[] arr){
         if (arr == null){
-            throw new IllegalArgumentException();
+            throw new NullPointerException();
         }
         for (int out = arr.length - 1; out > 0; out--){
             for (int inner = 0; inner < out; inner++){
