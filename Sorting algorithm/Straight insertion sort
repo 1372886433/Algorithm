@@ -1,4 +1,4 @@
-     /**
+    /**
      * Sort the arr from the smallest to the largest.
      * Throw a illegalArgument exception if the arr point to null.
      * @param arr the array to be sorted. The element at index 0 should be a sentinel.
