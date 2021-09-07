@@ -1,20 +1,23 @@
     /**
      * Sort the arr from small to large.
-     * @param arr the array to be sorted. The element at index 0 should be a sentinel.
+     *
+     * @param arr   the array to be sorted. The element at index 0 should be a sentinel.
      * @param delta a group of increment for the sorting, the value of last index must be 1
      * @throws NullPointerException if arr or delta points to null
+     * @throws IllegalArgumentException if the value of last index of delta is not 1
      */
-    public static void shellSort(int[] arr, int[] delta){
-        if(arr == null || delta == null) throw new NullPointerException();
-        for (int increment : delta) {
-            for (int i = increment + 1; i < arr.length; i++) {
-                arr[0] = arr[i];
-                int j;
-                for (j = i; j > increment && (arr[0] < arr[j - increment]); j = j - increment) {
-                    arr[j] = arr[j - increment];
+    public static void shellSort(int[] arr, int[] delta) {
+        if (arr == null || delta == null) throw new NullPointerException();
+        if (delta[delta.length-1] != 1) throw new IllegalArgumentException("The value of last index of delta must be 1");
+            for (int increment : delta) {
+                for (int i = increment + 1; i < arr.length; i++) {
+                    arr[0] = arr[i];
+                    int j;
+                    for (j = i; j > increment && (arr[0] < arr[j - increment]); j = j - increment) {
+                        arr[j] = arr[j - increment];
+                    }
+                    arr[j] = arr[0];
                 }
-                arr[j] = arr[0];
             }
-        }
         arr[0] = 0;
     }
