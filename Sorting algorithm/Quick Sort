@@ -1,0 +1,25 @@
+    /**
+     * Sort the arr from the smallest to the largest.
+     *
+     * @param arr the array to be sorted. The element at index 0 should be a sentinel
+     * @throws NullPointerException if arr points to null
+     */
+    public static void quickSort(int[] arr) {
+        if (arr == null) throw new NullPointerException();
+        quickSort(arr, 1, arr.length - 1);
+    }
+
+    private static void quickSort(int[] arr, int lowest, int highest) {
+        if (lowest >= highest) return;
+        int low = lowest, high = highest;
+        arr[0] = arr[low];
+        while (low < high) {
+            while (low < high && arr[high] >= arr[0]) high--;
+            arr[low] = arr[high];
+            while (low < high && arr[low] <= arr[0]) low++;
+            arr[high] = arr[low];
+        }
+        arr[low] = arr[0];
+        quickSort(arr, lowest, low - 1);
+        quickSort(arr, high + 1, highest);
+    }
