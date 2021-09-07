@@ -1,19 +1,22 @@
-   /**
-    * Sort the arr from the smallest to the largest.
-    * @throws NullPointerException if the arr point to null.
-    * @param arr the list to be sorted
-    */
-    public static void bubbleSort(int[] arr){
-        if (arr == null){
-            throw new NullPointerException();
-        }
-        for (int out = arr.length - 1; out > 0; out--){
-            for (int inner = 0; inner < out; inner++){
-                if (arr[inner]>arr[inner+1]){ //switch
+    /**
+     * Sort the arr from the smallest to the largest.
+     * Throw a illegalArgument exception if the arr point to null.
+     *
+     * @param arr the list to be sorted
+     */
+    public static void bubbleSort(int[] arr) {
+        if (arr == null) throw new NullPointerException();
+        boolean flag = false;
+        for (int out = arr.length - 1; out > 0; out--) {
+            for (int inner = 0; inner < out; inner++) {
+                if (arr[inner] > arr[inner + 1]) { //switch
                     int larger = arr[inner];
                     arr[inner] = arr[inner + 1];
                     arr[inner + 1] = larger;
+                    flag = true;
                 }
             }
+            if (!flag) break;
+            flag = false;
         }
     }
