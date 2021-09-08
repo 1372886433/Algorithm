@@ -1,0 +1,19 @@
+    /**
+     * Sort arr from the smallest to the largest 
+     * @param arr the array to be sorted
+     * @throws NullPointerException if arr points to null
+     */
+    public static void selectionSort(int[] arr) {
+        if (arr == null) throw new NullPointerException();
+        for (int i = 0; i < arr.length; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                minIndex = arr[j] < arr[minIndex] ? j : minIndex;
+            }
+            if (i != minIndex) {
+                int temp = arr[i];
+                arr[i] = arr[minIndex];
+                arr[minIndex] = temp;
+            }
+        }
+    }
