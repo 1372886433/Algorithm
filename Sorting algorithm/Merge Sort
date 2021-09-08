@@ -1,0 +1,33 @@
+    /**
+     * Sort arr from the smallest to the largest
+     *
+     * @param arr the array to be sorted
+     * @throws NullPointerException if arr points to null
+     */
+    public static void mergeSort(int[] arr) {
+        if (arr == null) throw new NullPointerException();
+        int[] temp = new int[arr.length];
+        mergeSort(arr, 0, arr.length - 1, temp);
+    }
+
+    private static void mergeSort(int[] arr, int start, int end, int[] temp) {
+        if (start >= end) return;
+        int mid = (start + end) / 2;
+        mergeSort(arr, start, mid, temp);
+        mergeSort(arr, mid + 1, end, temp);
+        int leftIndex = start, rightIndex = mid + 1, tempIndex = 0;
+        while (leftIndex <= mid && rightIndex <= end) {
+            if (arr[leftIndex] < arr[rightIndex]) {
+                temp[tempIndex] = arr[leftIndex];
+                leftIndex++;
+            } else {
+                temp[tempIndex] = arr[rightIndex];
+                rightIndex++;
+            }
+            tempIndex++;
+        }
+        while (leftIndex <= mid) temp[tempIndex++] = arr[leftIndex++];
+        while (rightIndex <= end) temp[tempIndex++] = arr[rightIndex++];
+        tempIndex = 0;
+        while (start <= end) arr[start++] = temp[tempIndex++];
+    }
