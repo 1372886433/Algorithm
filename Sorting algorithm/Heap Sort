@@ -1,0 +1,40 @@
+    /**
+     * Sort arr from the smallest to the largest
+     *
+     * @param arr the array to be sorted. It should start from index 1. The value at index 0 will not be involved while sorting.
+     * @throws NullPointerException if arr points to null.
+     */
+    public static void heapSort(int[] arr) {
+        if (arr == null) throw new NullPointerException();
+        // Build heap
+        for (int i = arr.length / 2; i >= 1; i--) {
+            shrink(arr, i, arr.length - 1);
+        }
+        for (int i = arr.length - 1; i > 1; i--) {
+            // Switch the largest to the last index of the remain heap.
+            int temp = arr[1];
+            arr[1] = arr[i];
+            arr[i] = temp;
+            shrink(arr, 1, i - 1);
+        }
+    }
+
+    private static void shrink(int[] arr, int start, int end) {
+        int i = start;
+        while (2 * i <= end) {
+            if (2 * i + 1 <= end) {
+                int maxIndex = arr[2 * i] > arr[2 * i + 1] ? 2 * i : 2 * i + 1;
+                if (arr[maxIndex] <= arr[i]) break;
+                int temp = arr[maxIndex];
+                arr[maxIndex] = arr[i];
+                arr[i] = temp;
+                i = maxIndex;
+            } else {
+                if (2 * i <= arr[i]) break;
+                int temp = arr[2 * i];
+                arr[2 * i] = arr[i];
+                arr[i] = temp;
+                break;
+            }
+        }
+     }
