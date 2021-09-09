@@ -8,6 +8,7 @@
      */
     public static void shellSort(int[] arr, int[] delta) {
         if (arr == null || delta == null) throw new NullPointerException();
+        if (arr.length == 0) return;
         if (delta[delta.length-1] != 1) throw new IllegalArgumentException("The value of last index of delta must be 1");
             for (int increment : delta) {
                 for (int i = increment + 1; i < arr.length; i++) {
