@@ -6,6 +6,7 @@
      */
     public static void bubbleSort(int[] arr) {
         if (arr == null) throw new NullPointerException();
+        if (arr.length == 0) return;
         boolean flag = false;
         for (int out = arr.length - 1; out > 0; out--) {
             for (int inner = 0; inner < out; inner++) {
