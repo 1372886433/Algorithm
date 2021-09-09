@@ -1,0 +1,40 @@
+    /**
+     * sort arr from the smallest to the largest, need any other sort method to help with
+     *
+     * @param arr the array to be sorted
+     * @throws NullPointerException if arr points to null
+     */
+    public static void bucketSort(int[] arr) {
+        bucketSort(arr, 5);
+    }
+
+    private static void bucketSort(int[] arr, int bucketSize) {
+        if (arr == null) throw new NullPointerException();
+        if (bucketSize <= 0) throw new IllegalArgumentException("bucketSize must be larger than 0");
+        if (arr.length == 0) return;
+
+        int min = arr[0], max = arr[0];
+        for (int i : arr) {
+            if (i < min) min = i;
+            else if (i > max) max = i;
+        }
+
+        int bucketCount = (max - min + 1) / bucketSize + 1;
+        int[][] buckets = new int[bucketCount][0];
+        // put items into buckets
+        for (int i : arr) {
+            int bucketIndex = (i - min) / bucketSize;
+            buckets[bucketIndex] = Arrays.copyOf(buckets[bucketIndex], buckets[bucketIndex].length + 1);
+            buckets[bucketIndex][buckets[bucketIndex].length - 1] = i;
+        }
+        // sort items in each bucket using merge sort
+        int arrIndex = 0;
+        for (int[] bucket : buckets) {
+            if (bucket.length <= 0) continue;
+            mergeSort(bucket);
+
+            for (int i : bucket) {
+                arr[arrIndex++] = i;
+            }
+        }
+    }
