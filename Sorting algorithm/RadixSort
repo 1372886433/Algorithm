@@ -1,0 +1,45 @@
+    /**
+     * sort arr from the smallest to the largest
+     *
+     * @param arr the array to be sorted
+     * @throws NullPointerException if arr points to null
+     */
+    public static void radixSort(int[] arr) {
+        if (arr == null) throw new NullPointerException();
+        if (arr.length == 0) return;
+
+        int min = arr[0], max = arr[0];
+        for (int i : arr) {
+            if (i < min) min = i;
+            else if (i > max) max = i;
+        }
+        //get the largest length of numbers
+        int length1 = 0, length2 = 0;
+        for (int i = min; i != 0; i /= 10) {
+            length1++;
+        }
+        for (int i = max; i != 0; i /= 10) {
+            length2++;
+        }
+        int maxLength = Math.max(length1, length2);
+        int mod = 10, dev = mod / 10;
+        for (int i = 0; i < maxLength; i++, mod *= 10, dev = mod / 10) {
+            // buckets 0~9 for negative values, 10~19 for positive values
+            int[][] buckets = new int[20][0];
+
+            for (int j : arr) {
+                int bucketIndex = (j % mod) / dev + 10;
+                buckets[bucketIndex] = Arrays.copyOf(buckets[bucketIndex], buckets[bucketIndex].length + 1);
+                buckets[bucketIndex][buckets[bucketIndex].length - 1] = j;
+            }
+            // put items back to the original array from buckets
+            int arrIndex = 0;
+            for (int[] bucket : buckets) {
+                if (bucket.length <= 0) continue;
+
+                for (int k : bucket) {
+                    arr[arrIndex++] = k;
+                }
+            }
+        }
+    }
