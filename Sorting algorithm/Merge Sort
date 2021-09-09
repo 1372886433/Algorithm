@@ -6,6 +6,7 @@
      */
     public static void mergeSort(int[] arr) {
         if (arr == null) throw new NullPointerException();
+        if (arr.length == 0) return;
         int[] temp = new int[arr.length];
         mergeSort(arr, 0, arr.length - 1, temp);
     }
