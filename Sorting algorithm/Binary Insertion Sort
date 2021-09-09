@@ -6,6 +6,7 @@
      */
     public static void binaryInsertionSort(int[] arr) {
         if (arr == null) throw new NullPointerException();
+        if (arr.length == 0) return;
         // the index 0 is a sentinel and the index 1 doesn't need to be sorted.
         for (int i = 2; i < arr.length; i++) {
             arr[0] = arr[i];
