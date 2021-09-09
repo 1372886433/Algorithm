@@ -1,0 +1,24 @@
+    /**
+     * Sort arr from the smallest to the largest
+     *
+     * @param arr the array to be sorted
+     * @throws NullPointerException if arr points to null
+     */
+    public static void countingSort(int[] arr) {
+        if (arr == null) throw new NullPointerException();
+        if (arr.length == 0) return;
+        int min = arr[0], max = arr[0];
+        for (int i : arr) {
+            if (i < min) min = i;
+            else if (i > max) max = i;
+        }
+        int[] container = new int[max - min + 1];
+        for (int i : arr) {
+            container[i - min]++;
+        }
+        for (int i = 0, j = 0; j < container.length; i++) {
+            arr[i] = j + min;
+            container[j]--;
+            while (j < container.length && container[j] == 0) j++;
+        }
+    }
