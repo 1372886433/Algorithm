@@ -6,6 +6,7 @@
      */
     public static void heapSort(int[] arr) {
         if (arr == null) throw new NullPointerException();
+        if (arr.length == 0) return;
         // Build heap
         for (int i = arr.length / 2; i >= 1; i--) {
             shrink(arr, i, arr.length - 1);
